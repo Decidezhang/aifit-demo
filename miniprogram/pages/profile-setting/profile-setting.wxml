@@ -1,0 +1,50 @@
+<!--profile-setting.wxml-->
+<navigation-bar title="编辑资料" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y="true" type="list">
+  <view class="page">
+    <view class="card">
+      <view class="section-head">头像</view>
+      <view class="avatar-row">
+        <t-avatar
+          class="avatar"
+          image="{{avatar || defaultAvatar}}"
+          size="large"
+          shape="circle"
+        ></t-avatar>
+        <view class="avatar-actions">
+          <text class="avatar-tip">支持 JPG/PNG，建议正方形头像</text>
+          <view class="avatar-button" bindtap="onChooseAvatar">上传新头像</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-head">用户名</view>
+      <view class="input-wrapper">
+        <input
+          class="nickname-input"
+          value="{{nickname}}"
+          maxlength="20"
+          placeholder="请输入用户名"
+          placeholder-class="placeholder"
+          confirm-type="done"
+          bindinput="onNicknameInput"
+        />
+      </view>
+      <view class="hint">2-20个字符，支持中文、字母、数字</view>
+    </view>
+
+    <view class="actions">
+      <t-button
+        class="save-button"
+        theme="primary"
+        size="large"
+        bindtap="onSave"
+        loading="{{saving}}"
+        disabled="{{saving}}"
+      >
+        保存修改
+      </t-button>
+    </view>
+  </view>
+</scroll-view>

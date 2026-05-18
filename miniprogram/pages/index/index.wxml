@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<navigation-bar title="AI衣橱" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 试衣图片卡片网格 -->
+    <view class="card-grid">
+      <view class="card-item" wx:for="{{tryOnImages}}" wx:key="id" bindtap="onCardTap" data-item="{{item}}">
+        <image class="card-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+        <view class="card-info">
+          <view class="user-info">
+            <image class="user-avatar" src="{{item.userAvatar}}" mode="aspectFill"></image>
+            <text class="username">{{item.username}}</text>
+          </view>
+          <text class="create-time">{{item.createTime}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{tryOnImages.length === 0}}">
+      <image class="empty-image" src="/assets/image-01.svg" mode="aspectFit"></image>
+      <text class="empty-text">暂无试衣图片</text>
+      <text class="empty-subtitle">点击右下角按钮开始AI试衣</text>
+    </view>
+  </view>
+
+  <t-fab class="fab-button" icon="add" bindclick="onAddClick" aria-label="增加"></t-fab>
+</scroll-view>

@@ -1,0 +1,10 @@
+{
+  "name": "try-on-handlers",
+  "version": "1.0.0",
+  "description": "AI试衣处理云函数",
+  "main": "index.js",
+  "dependencies": {
+    "node-fetch": "^2.6.7",
+    "wx-server-sdk": "^3.0.0"
+  }
+}

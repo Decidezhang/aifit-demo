@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "编辑资料",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}

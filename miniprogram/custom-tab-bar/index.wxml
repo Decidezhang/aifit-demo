@@ -1,0 +1,14 @@
+<t-tab-bar class="custom-tab-bar" value="{{selected}}" bindchange="onTabChange" split="{{false}}">
+  <t-tab-bar-item
+    value="0"
+    icon="view-module"
+  >
+    AI衣橱
+  </t-tab-bar-item>
+  <t-tab-bar-item
+    value="1"
+    icon="user"
+  >
+    我的
+  </t-tab-bar-item>
+</t-tab-bar>

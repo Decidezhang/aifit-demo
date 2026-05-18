@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "AI试衣",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
+    "t-radio": "tdesign-miniprogram/radio/radio"
+  }
+}

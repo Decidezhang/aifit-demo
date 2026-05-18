@@ -1,0 +1,205 @@
+/**try-on.less**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
+
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.container {
+  padding: 24rpx;
+}
+
+.notice-bar {
+  margin-bottom: 32rpx;
+}
+
+.upload-section {
+  margin-bottom: 40rpx;
+}
+
+.upload-item {
+  margin-bottom: 32rpx;
+
+  .upload-label {
+    display: block;
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 16rpx;
+  }
+}
+
+.upload-box {
+  width: 100%;
+  height: 400rpx;
+  background: #fff;
+  border: 2rpx dashed #ddd;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:active {
+    border-color: #0052d9;
+  }
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+  object-fit: cover;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  t-icon {
+    font-size: 80rpx;
+    margin-bottom: 16rpx;
+    color: #999;
+  }
+
+  .upload-text {
+    font-size: 28rpx;
+    color: #999;
+    margin-top: 16rpx;
+  }
+}
+
+.clothes-type-section {
+  margin-bottom: 40rpx;
+
+  .section-label {
+    display: block;
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 16rpx;
+  }
+
+  t-radio-group {
+    width: 100%;
+  }
+}
+
+.uploading-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+
+  .uploading-text {
+    color: #fff;
+    font-size: 30rpx;
+    letter-spacing: 4rpx;
+  }
+}
+
+.generate-section {
+  margin-top: 60rpx;
+  padding: 40rpx 0;
+}
+
+.generate-button {
+  width: 100%;
+  height: 96rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  border-radius: 16rpx;
+}
+
+.popup-content {
+  height: 100%;
+  padding: 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.generating-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.skeleton-container {
+  width: 600rpx;
+  height: 800rpx;
+  margin-bottom: 40rpx;
+}
+
+.generating-text {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 40rpx;
+}
+
+.progress-bar {
+  width: 400rpx;
+  height: 8rpx;
+  background: #f0f0f0;
+  border-radius: 4rpx;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0052d9, #0066ff);
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.result-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.result-image {
+  width: 600rpx;
+  height: 800rpx;
+  border-radius: 16rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+}
+
+.result-actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 48rpx;
+
+  t-button {
+    flex: 1;
+  }
+}

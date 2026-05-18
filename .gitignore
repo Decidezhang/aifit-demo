@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+miniprogram/miniprogram_npm/
+cloudfunctions/*/node_modules/
+
+# Build
+miniprogram/miniprogram/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Private config
+project.private.config.json
+
+# Logs
+*.log
+npm-debug.log*

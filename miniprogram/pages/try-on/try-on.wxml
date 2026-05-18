@@ -1,0 +1,82 @@
+<!-- try-on.wxml -->
+<navigation-bar title="AI试衣" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <t-notice-bar class="notice-bar" content="请上传清晰的正面照" theme="info"></t-notice-bar>
+    <!-- 图片上传区域 -->
+    <view class="upload-section">
+      <!-- 个人形象上传 -->
+      <view class="upload-item">
+        <text class="upload-label">个人形象</text>
+        <view class="upload-box" bindtap="onUploadPerson">
+          <image wx:if="{{personImage}}" class="uploaded-image" src="{{personImage}}" mode="aspectFill"></image>
+          <view wx:else class="upload-placeholder">
+            <t-icon class="upload-icon" name="camera"></t-icon>
+            <text class="upload-text">点击上传个人照片</text>
+          </view>
+          <view wx:if="{{uploadingPerson}}" class="uploading-mask">
+            <text class="uploading-text">上传中...</text>
+          </view>
+        </view>
+      </view>
+      <!-- 衣服上传 -->
+      <view class="upload-item">
+        <text class="upload-label">我的衣服</text>
+        <view class="upload-box" bindtap="onUploadClothes">
+          <image wx:if="{{clothesImage}}" class="uploaded-image" src="{{clothesImage}}" mode="aspectFill"></image>
+          <view wx:else class="upload-placeholder">
+            <t-icon class="upload-icon" name="image-add"></t-icon>
+            <text class="upload-text">点击上传衣服照片</text>
+          </view>
+          <view wx:if="{{uploadingClothes}}" class="uploading-mask">
+            <text class="uploading-text">上传中...</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 服装类型选择 -->
+    <view class="clothes-type-section">
+      <text class="section-label">服装类型</text>
+      <t-radio-group value="{{selectedClothesType}}" bind:change="onClothesTypeChange" shape="button" size="medium">
+        <t-radio
+          wx:for="{{clothesTypeOptions}}"
+          wx:key="value"
+          value="{{item.value}}"
+        >
+          {{item.label}}
+        </t-radio>
+      </t-radio-group>
+    </view>
+    <!-- 生成按钮 -->
+    <view class="generate-section">
+      <t-button class="generate-button" block theme="primary" size="large" bindtap="onGenerateClick" disabled="{{!canGenerate}}">
+        {{canGenerate ? '生成AI试衣效果' : '请上传图片'}}
+      </t-button>
+    </view>
+  </view>
+</scroll-view>
+<!-- 生成结果弹窗 -->
+<t-popup visible="{{showPopup}}" placement="bottom" bind:visible-change="onPopupVisibleChange" custom-style="height: 80vh">
+  <view class="popup-content">
+    <!-- 生成中状态 -->
+    <view wx:if="{{isGenerating}}" class="generating-state">
+      <view class="skeleton-container">
+        <t-skeleton theme="image" loading="{{true}}"></t-skeleton>
+      </view>
+      <text class="generating-text">AI正在为您生成试衣效果...</text>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progress}}%"></view>
+      </view>
+      <text class="progress-text">{{progress}}%</text>
+    </view>
+    <!-- 生成完成状态 -->
+    <view wx:else class="result-state">
+      <t-image wx:if="{{resultImage}}" class="result-image" src="{{resultImage}}" mode="aspectFit"></t-image>
+      <view class="result-actions">
+        <t-button theme="primary" bindtap="onSaveClick" loading="{{savingResult}}" disabled="{{savingResult}}">
+          {{savingResult ? '保存中...' : '保存'}}
+        </t-button>
+      </view>
+    </view>
+  </view>
+</t-popup>

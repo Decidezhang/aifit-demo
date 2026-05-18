@@ -1,0 +1,88 @@
+<!--profile.wxml-->
+<navigation-bar title="我的" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 用户信息区域 -->
+    <view class="user-section">
+      <!-- 未登录状态 -->
+      <view wx:if="{{!isLoggedIn}}" class="login-state">
+        <t-avatar class="user-avatar" image="{{defaultAvatar}}" size="large"></t-avatar>
+        <text class="welcome-text">欢迎来到AI试衣</text>
+        <t-button theme="primary" size="large" bindtap="onLoginClick">登录</t-button>
+      </view>
+
+      <!-- 已登录状态 -->
+      <view wx:else class="profile-state">
+        <view class="user-info" bindtap="onUserInfoTap">
+          <t-avatar class="user-avatar" image="{{userInfo.avatar}}" size="large"></t-avatar>
+          <text class="username">{{userInfo.nickname}}</text>
+        </view>
+      </view>
+    </view>
+
+    
+    <!-- 未登录时的插图 -->
+    <view wx:if="{{!isLoggedIn}}" class="illustration-section">
+      <image class="illustration" src="/assets/image-02.svg" mode="aspectFit"></image>
+      <text class="illustration-text">登录后查看您的试衣记录</text>
+    </view>
+
+    <!-- 我的试衣作品 -->
+    <view wx:if="{{isLoggedIn && myTryOnImages.length > 0}}" class="my-works-section">
+      <view class="section-header">
+        <text class="section-title">我的试衣作品</text>
+        <text class="section-count">共{{myTryOnImages.length}}件</text>
+      </view>
+
+      <view class="works-grid">
+        <view
+          class="work-item"
+          wx:for="{{myTryOnImages}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+        >
+          <image
+            class="work-image"
+            src="{{item.imageUrl}}"
+            mode="aspectFill"
+            catchtap="onWorkImageTap"
+            data-id="{{item.id}}"
+          ></image>
+          <view class="work-info">
+            <text class="work-date">{{item.createTime}}</text>
+            <view class="work-actions">
+              <view class="work-status {{item.status === 'published' ? 'status-published' : 'status-private'}}">
+                {{item.status === 'published' ? '已发布' : '个人可见'}}
+              </view>
+              <view
+                class="publish-btn {{item.status === 'published' ? 'btn-unpublish' : 'btn-publish'}}"
+                catchtap="onPublishTap"
+                data-id="{{item.id}}"
+                data-status="{{item.status}}"
+              >
+                {{item.status === 'published' ? '取消发布' : '发布'}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{isLoggedIn && myTryOnImages.length === 0}}" class="empty-works">
+      <t-empty description="暂无试衣作品" icon="image">
+        <t-button theme="primary" size="small" bindtap="onTryNowClick">立即试衣</t-button>
+      </t-empty>
+    </view>
+
+    <t-action-sheet
+      visible="{{actionSheetVisible}}"
+      items="{{actionSheetItems}}"
+      show-cancel="{{true}}"
+      cancel-text="取消"
+      bind:selected="onActionSheetSelected"
+      bind:cancel="onActionSheetCancel"
+      bind:close="onActionSheetClose"
+    ></t-action-sheet>
+  </view>
+</scroll-view>
